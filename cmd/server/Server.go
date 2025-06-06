@@ -5,7 +5,7 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
-	"github.com/lalo64/payment_domain/internal/payment/config"
+	"github.com/lalo64/payment_domain/internal/config"
 	"github.com/lalo64/payment_domain/internal/payment/infraestructure/http/routes"
 )
 

@@ -25,7 +25,7 @@ type Payment struct {
 	Currency      string
 	Status        PaymentStatus
 	PaymentMethod string
-	ProcessedAt   *time.Time
+	ProcessedAt   time.Time
 	TransactionID string
 }
 
@@ -39,7 +39,7 @@ func (p *Payment) Process() ( *events.PaymentProcessed, error) {
 
 	now := time.Now()
 	p.Status = StatusSuccess
-	p.ProcessedAt = &now
+	p.ProcessedAt = now
 
 	event := &events.PaymentProcessed{
 		PaymentID:   p.ID,

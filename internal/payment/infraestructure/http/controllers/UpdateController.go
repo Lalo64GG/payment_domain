@@ -63,7 +63,7 @@ func (ctr *UpdateController) Run(ctx *gin.Context){
 
 	
 
-	payment, err := ctr.UpdateUseCase.Run(id, req.Status)
+	payment, err := ctr.UpdateUseCase.Run(id, req.Status, req.ProcessAt)
 
 	if err != nil {
 		ctx.JSON(http.StatusInternalServerError, response.Response{

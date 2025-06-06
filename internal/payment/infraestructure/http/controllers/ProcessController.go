@@ -33,6 +33,6 @@ func (c *ProcessController) Run(ctx *gin.Context)  {
 	err = c.ProcessUseCase.Run(id)
 
 	if err != nil {
-		return 
+		return  
 	}
 }

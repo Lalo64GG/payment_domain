@@ -28,7 +28,7 @@ func (uc *ProcessUseCaseRepository) Run(id int64) error {
 	}
 	fmt.Println("Payment event processed:", event)
 
-	updatedPayment, err := uc.PaymentRepository.Update(payment.ID, string(payment.Status))
+	updatedPayment, err := uc.PaymentRepository.Update(payment.ID, string(payment.Status), payment.ProcessedAt)
 	if err != nil {
 		return err
 	}
