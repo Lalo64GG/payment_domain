@@ -31,14 +31,27 @@ type Payment struct {
 
 // * Comportamientos del dominio
 func (p *Payment) Process() ( *events.PaymentProcessed, error) {
-	fmt.Println("Processing payment with ID:", p.ID)
-	if p.Status != StatusPending {
-		fmt.Println("Payment is not pending, current status:", p.Status)
-		return nil, errors.New("only pending payments can be processed")
+	
+
+	if p.ID <= 0{
+		return nil, errors.New("payment must have a valid ID to be processed")
 	}
 
+	if p.BookingID <= 0 {
+		return nil, errors.New("payment must be associated with a valid booking")
+	}
+
+	if p.Amount <= 0{
+		return nil, errors.New("payment amount must be greater than zero")
+	}
+
+	if p.Status != StatusPending {
+		return nil, fmt.Errorf("only pending payments can be processed")
+	}
+
+
 	now := time.Now()
-	p.Status = StatusSuccess
+	p.Status= StatusSuccess
 	p.ProcessedAt = now
 
 	event := &events.PaymentProcessed{
@@ -47,6 +60,7 @@ func (p *Payment) Process() ( *events.PaymentProcessed, error) {
 		BookingID:   p.BookingID,
 		Amount:      p.Amount,
 		Currency:    p.Currency,
+		ProcessedAt: now,
 	}
 
 	return  event, nil
