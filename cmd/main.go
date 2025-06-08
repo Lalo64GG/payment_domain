@@ -3,7 +3,7 @@ package main
 import (
 	"os"
 
-	"github.com/lalo64/payment_domain/cmd/server"
+	"github.com/lalo64/payment_domain/internal/server"
 )
 
 var (

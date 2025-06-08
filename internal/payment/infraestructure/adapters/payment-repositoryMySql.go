@@ -6,7 +6,7 @@ import (
 	"log"
 	"time"
 
-	"github.com/lalo64/payment_domain/cmd/db"
+	"github.com/lalo64/payment_domain/internal/db"
 	"github.com/lalo64/payment_domain/internal/payment/domain/entities"
 )
 

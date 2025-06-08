@@ -7,7 +7,7 @@ import (
 	"os"
 
 	_ "github.com/go-sql-driver/mysql"
-	"github.com/lalo64/payment_domain/cmd/db"
+	"github.com/lalo64/payment_domain/internal/db"
 )
 
 func main() {
@@ -28,7 +28,7 @@ func Migrate(db *sql.DB) error {
 
 
 	sqlFiles := []string{
-		"cmd/db/migrations/sql/000_create_payment_table.sql",
+		"internal/db/migrations/000_create_payment_table.sql",
 	}
 
 	for _,file := range sqlFiles {
